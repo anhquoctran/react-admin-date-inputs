@@ -1,5 +1,7 @@
 # react-admin-date-inputs
 
+### This is refactoring of original repository: [react-admin-date-inputs](https://github.com/vascofg/react-admin-date-inputs)
+
 \<DateInput>, \<TimeInput> and \<DateTimeInput> components for [React-Admin](https://github.com/marmelab/react-admin).
 
 ![date-time-picker.gif](date-time-picker.gif)

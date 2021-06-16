@@ -4,13 +4,13 @@
   "description": "react-admin-date-inputs",
   "main": "lib/index.js",
   "author": "vascofg",
-  "homepage": "https://github.com/vascofg/react-admin-date-inputs",
+  "homepage": "https://github.com/anhquoctran/react-admin-date-inputs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vascofg/react-admin-date-inputs.git"
+    "url": "https://github.com/anhquoctran/react-admin-date-inputs.git"
   },
   "bugs": {
-    "url": "https://github.com/vascofg/react-admin-date-inputs/issues"
+    "url": "https://github.com/anhquoctran/react-admin-date-inputs/issues"
   },
   "license": "MIT",
   "devDependencies": {
