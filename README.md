@@ -1,4 +1,4 @@
-# react-admin-date-inputs
+# react-admin-date-inputs-refactor
 
 ### This is refactoring of original repository: [react-admin-date-inputs](https://github.com/vascofg/react-admin-date-inputs)
 
