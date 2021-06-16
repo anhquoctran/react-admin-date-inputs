@@ -14,9 +14,11 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
     className,
     isRequired,
     providerOptions,
+    variant,
+    formClassName
   } = fieldProps;
 
-  const { input, meta } = useInput({ source });
+  const input = useInput({ source });
   
   const { touched, error } = meta;
   
@@ -29,6 +31,8 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
       <MuiPickersUtilsProvider {...providerOptions}>
         <PickerComponent
           {...options}
+          variant={variant}
+          formClassName={formClassName}
           label={<FieldTitle
             label={label}
             source={source}
@@ -49,6 +53,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
 }
 
 Picker.propTypes = {
+  variant: PropTypes.oneOf('filled', 'outlined', 'standard'),
   input: PropTypes.object,
   isRequired: PropTypes.bool,
   label: PropTypes.string,
@@ -58,6 +63,7 @@ Picker.propTypes = {
   source: PropTypes.string,
   labelTime: PropTypes.string,
   className: PropTypes.string,
+  formClassName: PropTypes.string,
   providerOptions: PropTypes.shape({
     utils: PropTypes.func,
     locale: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -73,6 +79,8 @@ Picker.defaultProps = {
   source: '',
   labelTime: '',
   className: '',
+  formClassName: '',
+  variant: 'standard',
   providerOptions: {
     utils: DateFnsUtils,
     locale: undefined,
