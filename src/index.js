@@ -53,7 +53,7 @@ const Picker = ({ PickerComponent, ...fieldProps }) => {
 }
 
 Picker.propTypes = {
-  variant: PropTypes.oneOf('filled', 'outlined', 'standard'),
+  variant: PropTypes.oneOf('dialog', 'inline', 'static'),
   input: PropTypes.object,
   isRequired: PropTypes.bool,
   label: PropTypes.string,
@@ -80,7 +80,7 @@ Picker.defaultProps = {
   labelTime: '',
   className: '',
   formClassName: '',
-  variant: 'standard',
+  variant: 'inline',
   providerOptions: {
     utils: DateFnsUtils,
     locale: undefined,
