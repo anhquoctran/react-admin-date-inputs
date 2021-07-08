@@ -8,11 +8,11 @@
 
 Using NPM:
 ```
-npm install @react-admin/material-datepicker --save
+npm install react-admin-material-datepicker --save
 ```
 Using YARN:
 ```
-yarn add @react-admin/material-datepicker
+yarn add react-admin-material-datepicker
 ```
 ## Usage
 
