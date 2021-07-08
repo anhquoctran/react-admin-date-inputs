@@ -6,10 +6,14 @@
 
 ## Installation
 
+Using NPM:
 ```
-npm install react-admin-date-inputs-reactor --save
+npm install @react-admin/material-datepicker --save
 ```
-
+Using YARN:
+```
+yarn add @react-admin/material-datepicker
+```
 ## Usage
 
 You have to include an icon font to display the icons on the picker. This is mentioned on the bottom of the [material-ui-pickers installation page](https://material-ui-pickers.firebaseapp.com/installation).
@@ -27,7 +31,7 @@ import {
     TabbedForm,
     FormTab,
 } from 'react-admin'
-import { DateInput, TimeInput, DateTimeInput } from 'react-admin-date-inputs';
+import { DateInput, TimeInput, DateTimeInput } from '@react-admin/material-datepicker';
 
 export const NewsEdit = (props) => (
   <Edit title={<NewsTitle />} {...props}>
