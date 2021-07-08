@@ -1,6 +1,6 @@
 {
-  "name": "react-admin-date-inputs-refactor",
-  "version": "1.1.9",
+  "name": "@react-admin/material-datepicker",
+  "version": "1.1.10",
   "description": "react-admin-date-inputs",
   "main": "lib/index.js",
   "author": "vascofg",

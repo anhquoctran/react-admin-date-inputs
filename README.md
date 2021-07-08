@@ -1,6 +1,4 @@
-# react-admin-date-inputs-refactor
-
-### This is refactoring of original repository: [react-admin-date-inputs](https://github.com/vascofg/react-admin-date-inputs)
+# React-Admin Material DatePicker Input
 
 \<DateInput>, \<TimeInput> and \<DateTimeInput> components for [React-Admin](https://github.com/marmelab/react-admin).
 
@@ -9,7 +7,7 @@
 ## Installation
 
 ```
-npm install react-admin-date-inputs --save
+npm install react-admin-date-inputs-reactor --save
 ```
 
 ## Usage
