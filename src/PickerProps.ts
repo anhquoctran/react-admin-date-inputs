@@ -18,7 +18,7 @@ export interface PickerProps<TPickerOptions extends DatePickerProps | DateTimePi
 
   options?: TPickerOptions;
 
-  resource: string;
+  resource?: string;
 
   source: string;
 
