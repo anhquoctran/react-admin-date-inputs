@@ -1,5 +1,5 @@
 import { DateTimePicker, DateTimePickerProps, MuiPickersUtilsProvider } from '@material-ui/pickers';
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { FieldTitle, useInput } from 'react-admin';
 import { useField } from 'react-final-form';
 import { PickerProps, PickerPropTypes } from './PickerProps';
@@ -24,21 +24,19 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
     record
   } = fieldProps;
 
-  console.log('props', fieldProps);
-
-  // const { input: { onChange, value }, meta } = useInput({
-  //   defaultValue,
-  //   source,
-  //   validate,
-  //   isRequired,
-  //   resource,
-  //   name: source
-  // });
+  const initialValue = record?.[source] || null;
+  const [internalValue, setInternalValue] = useState<string>(initialValue);
 
   const { touched, error } = { touched: false, error: null };
-  const value = record?.[source] || null;
   
   const handleChange = useCallback(value => {
+    if (Date.parse(value)) {
+      onChange?.(value.toISOString());
+      setInternalValue(value.toISOString());
+    } else {
+      onChange?.(null);
+      setInternalValue(initialValue);
+    }
     Date.parse(value) ? onChange?.(value.toISOString()) : onChange?.(null);
   }, []);
 
@@ -54,11 +52,12 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
             isRequired={isRequired}
           />}
           id={id}
+
           error={!!(touched && error)}
           helperText={touched && error}
           margin="normal"
           className={className}
-          value={value}
+          value={internalValue}
           onChange={date => handleChange(date)}
         />
       </MuiPickersUtilsProvider>

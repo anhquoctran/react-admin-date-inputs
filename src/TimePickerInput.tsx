@@ -1,5 +1,5 @@
 import { TimePicker, MuiPickersUtilsProvider, TimePickerProps } from '@material-ui/pickers';
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { FieldTitle, useInput } from 'react-admin';
 import { PickerProps, PickerPropTypes } from './PickerProps';
 
@@ -13,22 +13,23 @@ const TimePickerInput: FC<PickerProps<TimePickerProps>> = ({ ...fieldProps }) =>
     isRequired,
     providerOptions,
     variant,
-    defaultValue,
-    validate
+    record,
+    onChange
   } = fieldProps;
 
-  const { input: { onChange, value }, meta } = useInput({
-    defaultValue,
-    source,
-    validate,
-    isRequired,
-    resource,
-    name: source
-  });
+  const initialValue = record?.[source] || null;
+  const [internalValue, setInternalValue] = useState<string>(initialValue);
 
-  const { touched, error } = meta;
+  const { touched, error } = { touched: false, error: null };
   
   const handleChange = useCallback(value => {
+    if (Date.parse(value)) {
+      onChange?.(value.toISOString());
+      setInternalValue(value.toISOString());
+    } else {
+      onChange?.(null);
+      setInternalValue(initialValue);
+    }
     Date.parse(value) ? onChange?.(value.toISOString()) : onChange?.(null);
   }, []);
 
@@ -47,7 +48,7 @@ const TimePickerInput: FC<PickerProps<TimePickerProps>> = ({ ...fieldProps }) =>
           error={!!(touched && error)}
           helperText={touched && error}
           className={className}
-          value={value ? new Date(value) : null}
+          value={internalValue}
           onChange={date => handleChange(date)}
         />
       </MuiPickersUtilsProvider>
