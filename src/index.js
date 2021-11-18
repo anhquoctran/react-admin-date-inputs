@@ -87,6 +87,6 @@ Picker.defaultProps = {
   },
 };
 
-export const DateInput = props => <Picker PickerComponent={DatePicker} {...props} />
-export const TimeInput = props => <Picker PickerComponent={TimePicker} {...props} />
-export const DateTimeInput = props => <Picker PickerComponent={DateTimePicker} {...props} />
+export const DateInput = props => <Picker PickerComponent={DatePicker} {...props} />;
+export const TimeInput = props => <Picker PickerComponent={TimePicker} {...props} />;
+export const DateTimeInput = props => <Picker PickerComponent={DateTimePicker} {...props} />;
