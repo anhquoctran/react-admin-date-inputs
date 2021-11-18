@@ -1,4 +1,4 @@
-import { DatePicker, DatePickerProps, DateTimePicker, DateTimePickerProps, TimePicker, TimePickerProps } from '@material-ui/pickers';
+import { DatePicker, DateTimePicker, DateTimePickerProps, TimePicker } from '@material-ui/pickers';
 import { MuiPickersUtilsProviderProps } from '@material-ui/pickers/MuiPickersUtilsProvider';
 import { ReactElement } from 'react';
 import { FieldMetaState } from 'react-final-form';
@@ -9,14 +9,14 @@ export interface PickerProps {
         [key: string]: any;
     };
     isRequired: boolean;
-    label: ReactElement;
-    options: DatePickerProps & TimePickerProps & DateTimePickerProps;
+    label?: ReactElement | string;
+    options: DateTimePickerProps;
     resource: string;
     source: string;
     labelTime: string;
     className: string;
     meta?: FieldMetaState<any>;
-    providerOptions: MuiPickersUtilsProviderProps;
+    providerOptions: Omit<MuiPickersUtilsProviderProps, 'children'>;
 }
 export declare const DateInput: (props: PickerProps) => JSX.Element;
 export declare const TimeInput: (props: PickerProps) => JSX.Element;
