@@ -1,6 +1,7 @@
 import { TimePicker, MuiPickersUtilsProvider, TimePickerProps } from '@material-ui/pickers';
 import React, { FC, useCallback } from 'react';
-import { FieldTitle, useInput } from 'react-admin';
+import { FieldTitle } from 'react-admin';
+import { useField } from 'react-final-form';
 import { PickerProps, PickerPropTypes } from './PickerProps';
 
 const TimePickerInput: FC<PickerProps<TimePickerProps>> = ({ ...fieldProps }) => {
@@ -15,7 +16,7 @@ const TimePickerInput: FC<PickerProps<TimePickerProps>> = ({ ...fieldProps }) =>
     variant
   } = fieldProps;
 
-  const { input, meta } = useInput({ source });
+  const { input, meta } = useField(source);
   
   const { touched, error } = meta;
   

@@ -1,6 +1,7 @@
 import { DateTimePicker, DateTimePickerProps, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import React, { FC, useCallback } from 'react';
 import { FieldTitle, useInput } from 'react-admin';
+import { useField } from 'react-final-form';
 import { PickerProps, PickerPropTypes } from './PickerProps';
 
 const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldProps }) => {
@@ -15,7 +16,7 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
     variant
   } = fieldProps;
 
-  const { input, meta } = useInput({ source });
+  const { input, meta } = useField(source);
   
   const { touched, error } = meta;
   

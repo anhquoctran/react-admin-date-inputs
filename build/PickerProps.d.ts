@@ -12,7 +12,7 @@ export interface PickerProps<TPickerOptions extends DatePickerProps | DateTimePi
     isRequired?: boolean;
     label?: ReactElement | string;
     options?: TPickerOptions;
-    resource: string;
+    resource?: string;
     source: string;
     labelTime?: string;
     className?: string;

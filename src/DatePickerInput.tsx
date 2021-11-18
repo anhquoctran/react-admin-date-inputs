@@ -1,6 +1,7 @@
 import { DatePicker, DatePickerProps, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import React, { FC, useCallback } from 'react';
 import { FieldTitle, useInput } from 'react-admin';
+import { useField } from 'react-final-form';
 import { PickerProps, PickerPropTypes } from './PickerProps';
 
 const DatePickerInput: FC<PickerProps<DatePickerProps>> = ({ ...fieldProps }) => {
@@ -15,7 +16,7 @@ const DatePickerInput: FC<PickerProps<DatePickerProps>> = ({ ...fieldProps }) =>
     variant
   } = fieldProps;
 
-  const { input, meta } = useInput({ source });
+  const { input, meta } = useField(source);
   
   const { touched, error } = meta;
   
