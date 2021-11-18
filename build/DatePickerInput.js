@@ -22,12 +22,13 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import React, { useCallback } from 'react';
-import { FieldTitle, useInput } from 'react-admin';
+import { FieldTitle } from 'react-admin';
+import { useField } from 'react-final-form';
 import { PickerPropTypes } from './PickerProps';
 var DatePickerInput = function (_a) {
     var fieldProps = __rest(_a, []);
     var options = fieldProps.options, label = fieldProps.label, source = fieldProps.source, resource = fieldProps.resource, className = fieldProps.className, isRequired = fieldProps.isRequired, providerOptions = fieldProps.providerOptions, variant = fieldProps.variant;
-    var _b = useInput({ source: source }), input = _b.input, meta = _b.meta;
+    var _b = useField(source), input = _b.input, meta = _b.meta;
     var touched = meta.touched, error = meta.error;
     var handleChange = useCallback(function (value) {
         Date.parse(value) ? input.onChange(value.toISOString()) : input.onChange(null);

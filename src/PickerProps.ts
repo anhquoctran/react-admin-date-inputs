@@ -5,6 +5,7 @@ import { FieldMetaState } from "react-final-form";
 import PropTypes from 'prop-types';
 import DateFnsUtils from "@date-io/date-fns";
 import enLocale from 'date-fns/locale/en-US';
+import { Validator } from "ra-core";
 
 export interface PickerProps<TPickerOptions extends DatePickerProps | DateTimePickerProps | TimePickerProps> {
 
@@ -30,6 +31,11 @@ export interface PickerProps<TPickerOptions extends DatePickerProps | DateTimePi
 
   providerOptions: Omit<MuiPickersUtilsProviderProps, 'children'>;
 
+  onChange?: Function;
+
+  defaultValue?: Date | string;
+
+  validate?: Validator | Validator[];
 }
 
 export const PickerPropTypes = {
@@ -45,7 +51,9 @@ export const PickerPropTypes = {
   providerOptions: PropTypes.shape({
     utils: PropTypes.func,
     locale: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  })
+  }),
+  onChange: PropTypes.func,
+  defaultValue: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string])
 };
 
 export const DefaultPropTypes = {
@@ -61,4 +69,8 @@ export const DefaultPropTypes = {
     utils: DateFnsUtils,
     locale: enLocale
   },
+  defaultValue: (() => {
+    const now = new Date();
+    return `${now.toDateString()} ${now.toTimeString}`;
+  })()
 };

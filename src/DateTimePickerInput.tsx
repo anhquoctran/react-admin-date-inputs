@@ -5,6 +5,7 @@ import { useField } from 'react-final-form';
 import { PickerProps, PickerPropTypes } from './PickerProps';
 
 const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldProps }) => {
+
   const {
     options,
     label,
@@ -13,15 +14,24 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
     className,
     isRequired,
     providerOptions,
-    variant
+    variant,
+    defaultValue,
+    validate
   } = fieldProps;
 
-  const { input, meta } = useField(source);
-  
+  const { input: { onChange, value }, meta } = useInput({
+    defaultValue,
+    source,
+    validate,
+    isRequired,
+    resource,
+    name: source
+  });
+
   const { touched, error } = meta;
   
   const handleChange = useCallback(value => {
-    Date.parse(value) ? input.onChange(value.toISOString()) : input.onChange(null);
+    Date.parse(value) ? onChange?.(value.toISOString()) : onChange?.(null);
   }, []);
 
   return (
@@ -35,11 +45,11 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
             resource={resource}
             isRequired={isRequired}
           />}
-          margin="normal"
           error={!!(touched && error)}
           helperText={touched && error}
+          margin="normal"
           className={className}
-          value={input.value ? new Date(input.value) : null}
+          value={value ? new Date(value as string) : null}
           onChange={date => handleChange(date)}
         />
       </MuiPickersUtilsProvider>
