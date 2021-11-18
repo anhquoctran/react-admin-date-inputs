@@ -36,6 +36,14 @@ export interface PickerProps<TPickerOptions extends DatePickerProps | DateTimePi
   defaultValue?: Date | string;
 
   validate?: Validator | Validator[];
+
+  id?: string;
+
+  margin?: any;
+
+  record?: { [key: string]: any };
+
+  basePath?: string;
 }
 
 export const PickerPropTypes = {

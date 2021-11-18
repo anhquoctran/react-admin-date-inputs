@@ -16,19 +16,27 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
     providerOptions,
     variant,
     defaultValue,
-    validate
+    validate,
+    onChange,
+    basePath,
+    id,
+    margin,
+    record
   } = fieldProps;
 
-  const { input: { onChange, value }, meta } = useInput({
-    defaultValue,
-    source,
-    validate,
-    isRequired,
-    resource,
-    name: source
-  });
+  console.log('props', fieldProps);
 
-  const { touched, error } = meta;
+  // const { input: { onChange, value }, meta } = useInput({
+  //   defaultValue,
+  //   source,
+  //   validate,
+  //   isRequired,
+  //   resource,
+  //   name: source
+  // });
+
+  const { touched, error } = { touched: false, error: null };
+  const value = record?.[source] || null;
   
   const handleChange = useCallback(value => {
     Date.parse(value) ? onChange?.(value.toISOString()) : onChange?.(null);
@@ -45,11 +53,12 @@ const DateTimePickerInput: FC<PickerProps<DateTimePickerProps>> = ({ ...fieldPro
             resource={resource}
             isRequired={isRequired}
           />}
+          id={id}
           error={!!(touched && error)}
           helperText={touched && error}
           margin="normal"
           className={className}
-          value={value ? new Date(value as string) : null}
+          value={value}
           onChange={date => handleChange(date)}
         />
       </MuiPickersUtilsProvider>
