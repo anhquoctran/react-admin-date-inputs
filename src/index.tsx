@@ -3,7 +3,7 @@ import { DatePicker, DatePickerProps, DateTimePicker, DateTimePickerProps, MuiPi
 import { MuiPickersUtilsProviderProps } from '@material-ui/pickers/MuiPickersUtilsProvider';
 import PropTypes from 'prop-types';
 import { FieldTitle, useInput } from 'react-admin';
-import React, { FC, ReactElement, useCallback } from 'react';
+import React, { FC, ReactElement, ReactNode, useCallback } from 'react';
 import { FieldMetaState, } from 'react-final-form';
 
 export interface PickerProps {
@@ -16,9 +16,9 @@ export interface PickerProps {
 
   isRequired: boolean;
 
-  label: ReactElement;
+  label?: ReactElement | string;
 
-  options: DatePickerProps & TimePickerProps & DateTimePickerProps;
+  options: DateTimePickerProps;
 
   resource: string;
 
@@ -30,7 +30,7 @@ export interface PickerProps {
 
   meta?: FieldMetaState<any>
 
-  providerOptions: MuiPickersUtilsProviderProps;
+  providerOptions: Omit<MuiPickersUtilsProviderProps, 'children'>;
 
 }
 
@@ -82,7 +82,7 @@ Picker.propTypes = {
   variant: PropTypes.oneOf(['dialog', 'inline', 'static']),
   input: PropTypes.object,
   isRequired: PropTypes.bool,
-  label: PropTypes.element,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   options: PropTypes.object,
   resource: PropTypes.string,
   source: PropTypes.string,
@@ -106,8 +106,7 @@ Picker.defaultProps = {
   variant: 'inline',
   providerOptions: {
     utils: DateFnsUtils,
-    locale: undefined,
-    children: null
+    locale: undefined
   },
 };
 
